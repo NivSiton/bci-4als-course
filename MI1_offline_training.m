@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function [recordingFolder,subID] = MI1_offline_training()
 %% MOTOR IMAGERY Training Scaffolding 
 % This code creates a training paradigm with (#) classes on screen for
@@ -93,7 +94,6 @@ pause(InitWait)
 cla
 for trial = 1:totalTrials
     outletStream.push_sample(startTrial);       % trial trigger & counter
-    startTrial = startTrial + trial;    
     currentClass = trainingVec(trial);          % What class is it?
     
     % Cue before ready

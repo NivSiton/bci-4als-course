@@ -17,7 +17,7 @@ function [] = MI2_preprocess(recordingFolder)
 % so on - but please cite properly if published.
 
 %% Some parameters (this needs to change according to your system):
-addpath 'C:\Toolboxes\eeglab2020_0'           % update to your own computer path
+% addpath 'C:\tools\eeglab2020_0'           % update to your own computer path
 eeglab;                                     % open EEGLAB 
 highLim = 40;                               % filter data under 40 Hz
 lowLim = 0.5;                               % filter data above 0.5 Hz
@@ -42,9 +42,9 @@ EEG_chans(10,:) = 'F04';
 EEG_chans(11,:) = 'T07';
 EEG_chans(12,:) = 'T08';
 EEG_chans(13,:) = 'P03';
-EEG_chans(14,:) = 'P03';
-EEG_chans(15,:) = 'P03';
-EEG_chans(16,:) = 'P03';
+% EEG_chans(14,:) = 'P03';
+% EEG_chans(15,:) = 'P03';
+% EEG_chans(16,:) = 'P03';
 
 %% (3) Low-pass filter
 EEG = pop_eegfiltnew(EEG, 'hicutoff',highLim,'plotfreqz',1);    % remove data above

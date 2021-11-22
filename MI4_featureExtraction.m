@@ -95,6 +95,7 @@ rightIdx = find(targetLabels == 2);                                 % find right
 rightIndices = randperm(length(rightIdx));
 percentRightIdx = floor(0.8*length(rightIdx));
 trainOVerallRight = overallRight(rightIndices(1:percentRightIdx),:);
+
 leftIndices = randperm(length(leftIdx));
 percentLeftIdx = floor(0.8*length(leftIdx));
 trainOverallLeft = overallLeft(leftIndices(1:percentLeftIdx),:);
@@ -156,7 +157,7 @@ for trial = 1:trials                                % run over all the trials
     
     for channel = 1:numChans                        % run over all the electrodes (channels)
         n = 1;                                      % start a new feature index
-        for feature = 1:numSpectralFeatures                 % run over all spectral band power features from the section above
+        for feature = 1:numSpectralFeatures         % run over all spectral band power features from the section above
             % Extract features: bandpower +-1 Hz around each target frequency
             MIFeaturesLabel(trial,channel,n) = bandpower(squeeze(MIData(trial,channel,times{feature})),Fs,bands{feature});
             n = n+1;            
@@ -181,7 +182,7 @@ for trial = 1:trials                                % run over all the trials
         % Spectral Moment
         MIFeaturesLabel(trial,channel,n) = sum(normlizedMatrix.*f'); % Calculate the spectral moment
         n = n + 1;
-        disp(strcat('Extracted Normalized Pwelch Matrix from electrode:',EEG_chans(channel,:)))
+        disp(strcat('Extracted Spectral Moment from electrode:',EEG_chans(channel,:)))
         
         
         % Spectral Edge
@@ -190,6 +191,7 @@ for trial = 1:trials                                % run over all the trials
         valuesBelow = @(z)find(probfunc(:,z)<=0.9);         % Create local function
         % apply function to each element of normlizedMatrix
         fun4Values = arrayfun(valuesBelow, 1:size(normlizedMatrix',1), 'un',0);
+        
         lengthfunc = @(y)length(fun4Values{y})+1;           % Create local function for length
         % apply function to each element of normlizedMatrix
         fun4length = cell2mat(arrayfun(lengthfunc, 1:size(normlizedMatrix',1), 'un',0));

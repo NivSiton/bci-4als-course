@@ -11,12 +11,12 @@ function [recordingFolder,subID] = MI1_offline_training()
 
 %% Make sure you have Lab Streaming Layer installed.
 % Set parameters (these will need to change according to your system):
-addpath('C:\Toolboxes\labstreaminglayer-master\LSL\liblsl-Matlab');     % lab streaming layer library
-addpath('C:\Toolboxes\labstreaminglayer-master\LSL\liblsl-Matlab\bin'); % lab streaming layer bin
+% addpath('C:\tools\liblsl-Matlab');     % lab streaming layer library
+% addpath('C:\tools\liblsl-Matlab\bin'); % lab streaming layer bin
 
 % Subject and recording parameters:
 subID = input('Please enter subject ID/Name: ');    % prompt to enter subject ID or name
-rootFolder = 'C:\Recordings\';                      % define recording folder location
+rootFolder = 'C:\Users\Idan\Desktop\Master NS\שנה א\סמסטר א\BCI4ALS\Recordings\';                      % define recording folder location
 
 % Define recording folder location and create the folder:
 recordingFolder = strcat(rootFolder,'\Sub',num2str(subID),'\');
